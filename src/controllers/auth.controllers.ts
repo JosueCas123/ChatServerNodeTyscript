@@ -11,9 +11,6 @@ const service = new UserService();
 
 const crearUsuario = async (req:Request, res:Response ) => {
 
-    
-
-
     try {
         const body = req.body
         const {email} = body
@@ -24,6 +21,7 @@ const crearUsuario = async (req:Request, res:Response ) => {
             return res.status(400).json({
                 ok:false,
                 msg:`El correo ${email} ya existe`
+                
             }) 
         
         }
@@ -39,13 +37,14 @@ const crearUsuario = async (req:Request, res:Response ) => {
 
         
     } catch (error) {
-       return res.status(400).json({
+        return res.status(400).json({
             ok:false,
-            msg:`error ${error}`
+            msg:'Error inesperado'
+    
         })
-            
-        }
-}
+        
+        }       
+    }
 
 
 const login = async(req:Request, res:Response) => {

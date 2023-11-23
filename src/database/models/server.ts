@@ -5,6 +5,7 @@ import Sockets from '../../service/socket.service';
 import { dbConnection } from '../config';
 import authRouter from '../../router/auth.router';
 import cors from 'cors';
+import { routerMesagge } from '../../router/mesajes.route';
 
 
 class Server {
@@ -36,7 +37,9 @@ class Server {
         //habilitamos el express.json 
         this.app.use(express.json());
         //api
-        this.app.use('/api/v1/login', authRouter)
+        this.app.use('/api/v1', authRouter)
+        //ruta de la carpeta publica
+        this.app.use('/api/v1/mensaje', routerMesagge)
     }
 
     private configureSocket () {

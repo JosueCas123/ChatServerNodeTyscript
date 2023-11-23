@@ -16,7 +16,7 @@ authRouter.post('/new',[
     validarCampos,
 ], crearUsuario)
 
-authRouter.post('/', [
+authRouter.post('/login', [
     check('email', 'El email es obligatorio').isEmail(),
     check('password', 'El password es obligatorio').not().isEmpty(),
     validarCampos,

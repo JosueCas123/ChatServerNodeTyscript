@@ -1,4 +1,4 @@
-import jwt from 'jsonwebtoken';
+import jwt, { JwtPayload } from 'jsonwebtoken';
 
 export const generarJWT = (uid:string) => {
     return new Promise((resolve, reject) => {
@@ -15,4 +15,14 @@ export const generarJWT = (uid:string) => {
             }
         })
     })
+}
+
+export const comprobarJWT = (token:any = '') => {
+    try {
+        const {uid} = jwt.verify(token, process.env.SECRETORPRIVATEKEY as string) as JwtPayload
+        return [true, uid];
+    } catch (error) {
+        return [false, null];
+    }
+
 }
