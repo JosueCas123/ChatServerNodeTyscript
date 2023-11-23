@@ -4,6 +4,7 @@ interface User extends Document  {
     toObject: any;
     nombre: string;
     email: string;
+    imageUrl?: string;
     password: string;
     online: boolean;
 }
@@ -21,6 +22,10 @@ const UsuarioSchema = new Schema<User>({
     password: {
         type: String,
         required: true
+    },
+     imageUrl: {
+        type: String,
+        
     },
     online:{
         type:Boolean,
